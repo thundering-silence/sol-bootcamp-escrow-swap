@@ -21,12 +21,12 @@ pub mod escrow_swap {
         token_a_amount_in: u64,
         token_b_amount_wanted: u64,
     ) -> Result<()> {
-        instructions::offer::send_offered_tokens_to_vault(&ctx, &token_a_amount_in)?;
-        instructions::offer::save_offer(ctx, &id, &token_b_amount_wanted)
+        instructions::make::send_offered_tokens_to_vault(&ctx, &token_a_amount_in)?;
+        instructions::make::save_offer(ctx, &id, &token_b_amount_wanted)
     }
 
     pub fn take_offer(ctx: Context<TakeOffer>) -> Result<()> {
-        instructions::offer::send_tokens_to_maker(&ctx)?;
-        instructions::offer::pull_tokens_from_vault(&ctx)
+        instructions::take::send_tokens_to_maker(&ctx)?;
+        instructions::take::pull_tokens_from_vault(&ctx)
     }
 }
